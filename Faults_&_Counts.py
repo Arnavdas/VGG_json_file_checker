@@ -64,6 +64,8 @@ if pth_root.is_dir() and pth_fold.is_dir() and pth_json.is_file() :# check if al
             print('NO annotated objects at all in :',j)
 
     print(count_obj)
+else:
+    print(pth_root,':',pth_root.is_dir(),',',pth_fold,':',pth_fold.is_dir(),',',pth_json,':',pth_json.is_file())
 
 # FOR MULTIPLE JSON FILES
 
@@ -127,3 +129,5 @@ if pth_root.is_dir() and pth_fold.is_dir() and pth_json.is_file() :# check if al
 #                 print('NO annotated objects at all in :',i,',',j)
 
 #     print(count_obj)
+# else:
+#     print(pth_root,':',pth_root.is_dir(),',',pth_fold,':',pth_fold.is_dir())
