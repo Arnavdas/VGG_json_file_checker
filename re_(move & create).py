@@ -12,7 +12,7 @@ pth_json = pth_folder.joinpath('imperfect_again_json.json')# place the json file
 
 if pth_root.is_dir() and pth_folder.is_dir() and pth_json.is_file():
 
-	print('Root path :',pth_root,', Folder path :',pth_fold,', Json file path :',pth_json)
+	print('Root path :',pth_root,', Folder path :',pth_folder,', Json file path :',pth_json)
     json_dict = json.load(pth_json.open())
     print('images in ',pth_json.name,':',len(json_dict))
     dict_relevant, no_region, dict_final = {}, {}, {}
@@ -59,7 +59,7 @@ else:
 # FOR MULTPLE JSON FILES AT ONCE :
 
 # if pth_root.is_dir() and pth_folder.is_dir():
-	# print('Root path :',pth_root,', Folder path :',pth_fold)
+	# print('Root path :',pth_root,', Folder path :',pth_folder)
 #     json_all = {}
 
 #     for i in os.listdir(pth_folder):
