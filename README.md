@@ -8,3 +8,5 @@ Put this up here because I use these scripts while annotating extensively.
 * Faults_&_Counts.py : Counts the annotated assets and also picks out the objects where there are some mistakes(like the area is specified but not tagged or if the annotation file exits but it's empty)
 
 * re_(move & create).py : removes objects from annotation files if they have 0 region attributes or have 0 regions and recreates new corrected json file(s)
+
+* combine_&_shift.py : combines different json files to create a single json file as well as shifts all the files(images) mentioned in the json file
