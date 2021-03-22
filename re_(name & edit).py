@@ -6,8 +6,6 @@ pth_img = pth_folder.joinpath('rectified_img')
 pth_json = pth_folder.joinpath('new_json_file.json')
 pth_dest = pth_root.joinpath('final_img')
 
-# BELOW SCRIPT ONLY RETAINS THOSE ANNOTATIONS OF SPECIFIC TAGS WHICH WE WANT AND RE-EDIT ANY EXISTING TAG, KEY 
-
 if pth_root.is_dir() and pth_folder.is_dir() and pth_json.is_file(): 
     
     print('Root path :',pth_root,', Folder path :',pth_folder,', json file path :',pth_json,'\n')
