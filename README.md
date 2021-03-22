@@ -11,4 +11,6 @@ Put this up here because I use these scripts while annotating extensively.
 
 * combine_&_shift.py : combines different json files to create a single json file as well as shifts all the files(images) mentioned in the json file
 
+* re_(name & edit).py : retains specific region attribute tags, re-edits the specific key and region attributes also in the json file, also shifts the images to different destination directories 
+
 PS : there are some indentation errors in above scripts while running in some text editors but otherwise seems fine in jupyter notebook
