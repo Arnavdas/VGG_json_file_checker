@@ -10,3 +10,5 @@ Put this up here because I use these scripts while annotating extensively.
 * re_(move & create).py : removes objects from annotation files if they have 0 region attributes or have 0 regions and recreates new corrected json file(s)
 
 * combine_&_shift.py : combines different json files to create a single json file as well as shifts all the files(images) mentioned in the json file
+
+PS : there are some indentation errors in above scripts while running in some text editors but otherwise seems fine in jupyter notebook
