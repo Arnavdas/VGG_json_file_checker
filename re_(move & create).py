@@ -50,8 +50,22 @@ if pth_root.is_dir() and pth_folder.is_dir() and pth_json.is_file():
     # writes the above dictonary as a json file containing updated filenames and keys
     new_name = 'imperfect_rectified_again.json'# should end with .json
     pth_new_json = pth_folder#setting the path for new corrected json file to be created
-    with open(str(pth_new_json)+'/'+new_name,'w') as write_file:# creates new json file in the same directory 
-        json.dump(dict_final, write_file)
+	
+   if pth_new_json.is_dir():
+        if new_name in os.listdir(pth_new_json):
+            print(new_name,'already exists in',pth_new_json,'\t')
+            p = int(input('if u proceed(enter 1), it will be overwritten else enter 0 :'))
+
+        if p:
+            if pth_new_json.is_file():
+                os.remove(str(pth_new_json)+'/'+new_name)
+            with open(str(pth_new_json)+'/'+new_name,'w') as write_file:# creates new json file in the same directory or rewrites it
+                json.dump(dict_final, write_file)
+                print(new_name,'created in',pth_new_json,':',pth_new_json.joinpath(new_name).is_file(),'\n')
+        else:
+            print('no new json file created in',pth_new_json,'\n')
+    else:
+        print(pth_new_json,':',pth_new_json.is_dir())
 else:
     print(pth_root,':',pth_root.is_dir(),',',pth_folder,':',pth_folder.is_dir(),',',pth_json,':',pth_json.is_file())
 
@@ -108,8 +122,21 @@ else:
 #         # writes the above dictonary as a json file containing updated filenames and keys
 #         new_name = 'new_json_files.json'# should end with .json
 #         pth_new_json = pth_folder.joinpath('new_jsons')#setting the path for new corrected json file to be created
-#         with open(str(pth_new_json)+'/'+str(t)+'_'+new_name,'w') as write_file:# creates new json file in the same directory 
-#             json.dump(dict_final, write_file)
+#         if pth_new_json.is_dir():
+#         if new_name in os.listdir(pth_new_json):
+#             print(new_name,'already exists in',pth_new_json,'\t')
+#             p = int(input('if u proceed(enter 1), it will be overwritten else enter 0 :'))
+
+#         if p:
+#             if pth_new_json.is_file():
+#                 os.remove(str(pth_new_json)+'/'+new_name)
+#             with open(str(pth_new_json)+'/'+new_name,'w') as write_file:# creates new json file in the same directory or rewrites it
+#                 json.dump(dict_final, write_file)
+#                 print(new_name,'created in',pth_new_json,':',pth_new_json.joinpath(new_name).is_file(),'\n')
+#         else:
+#             print('no new json file created in',pth_new_json,'\n')
+#     else:
+#         print(pth_new_json,':',pth_new_json.is_dir())
         
 # else: 
 #     print(pth_root,':',pth_root.is_dir(),',',pth_folder,':',pth_folder.is_dir())
