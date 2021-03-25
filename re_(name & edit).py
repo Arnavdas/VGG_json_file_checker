@@ -1,4 +1,4 @@
-import os, json, pathlib as pl, shutil, json
+import os, json, pathlib as pl, shutil, json, copy
 
 pth_root = pl.Path('/home/arnav/Desktop/detectron2_trial')
 pth_folder = pth_root.joinpath('sample_data')
@@ -9,7 +9,8 @@ pth_dest = pth_root.joinpath('final_img')
 if pth_root.is_dir() and pth_folder.is_dir() and pth_json.is_file(): 
     
     print('Root path :',pth_root,', Folder path :',pth_folder,', json file path :',pth_json,'\n')
-    all_json, wrong_tag, right_tag, new_json = {}, [], ['apple','orange','joint','nut'], {}
+    all_json, wrong_tag, new_json = {}, ['apple','orange','joint','nut'], {}
+    nam = 'fruit_' # for new name to new_json file
     edit_dict, edit_key, fname = {'aple':'apple', 'oranje':'orange'}, 'testing'+'_', 'example'+'_'
     json_file = json.load(pth_json.open())
     
@@ -26,17 +27,21 @@ if pth_root.is_dir() and pth_folder.is_dir() and pth_json.is_file():
                             pass
                         else:# sometimes there are strings only like : 'apple'
 #                             print(k['region_attributes'][s])
-                            if k['region_attributes'][s] in right_tag:# to retain a particular tagged object
-                                if len(edit_key)!= 0 and i!= edit_key+i:# changes the key of the objects 
-                                    new_json[edit_key+i] = json_file[i]
-                                else:
-                                    new_json[i] = json_file[i]
-                            if k['region_attributes'][s] in edit_dict.keys():# to correct spelling typos of tags if any : changes exact object tag(like cat, fish, apple)
+                            if k['region_attributes'][s] in wrong_tag:# to remove particular tagged objects
+                                remove.append(k)
+                            if k['region_attributes'][s] in edit_dict.keys():# changes exact object tag(like cat, fish, apple)
                                 k['region_attributes'][s] = edit_dict[k['region_attributes'][s]]
-                                if len(edit_key)!= 0 and i!= edit_key+i:# changes the key of the objects 
-                                    new_json[edit_key+i] = json_file[i]
-                                else:
-                                    new_json[i] = json_file[i]
+        if edit_key not in i:
+            new_json[edit_key+i] = json_file[i]# modify this according to your needs
+                                
+    new_json_1 = copy.deepcopy(new_json)
+
+    for i in new_json_1:
+        if fname not in new_json[i]['filename']:
+            new_json[i]['filename'] = fname+new_json[i]['filename']# use this if u have already renamed image files
+        for k in new_json_1[i]['regions']:
+            if k in remove:
+                new_json[i]['regions'].remove(k)
                                     
     if pth_img.is_dir() and pth_dest.is_dir():# shifts images in the new json file: u have the option to exclude this operation
         for i in new_json:
@@ -64,10 +69,12 @@ if pth_root.is_dir() and pth_folder.is_dir() and pth_json.is_file():
 
    		if pth_new_json.is_dir():
 	        if new_name in os.listdir(pth_new_json):
-	            print(new_name,'already exists in',pth_new_json,'\t')
+                print(new_name,'already exists in',pth_new_json,'\t')
 	            p = int(input('if u proceed(enter 1) it will be overwritten, else enter 0 :'))
-	        
-	        if p:    
+	               
+	        if p:
+                if pth_new_json.is_file():
+                    os.remove(str(pth_new_json)+'/'+new_name)    
 	            with open(str(pth_new_json)+'/'+new_name,'w') as write_file:# creates new json file in the same directory or rewrites it
 	                json.dump(new_json, write_file)
 	                print(new_name,'created in',pth_new_json,':',pth_new_json.joinpath(new_name).is_file())
