@@ -31,14 +31,17 @@ for j in os.listdir(pth):
         json_obj = {"filename":file_name,"size":file_size,'regions':[],"file_attributes":{}}
 # for Below line note that u can prepend anything to file_name+str(file_size) but do not change anything in between file_name and str(file_size)
         json_key = file_name+str(file_size)
-        pred = predictor_1(cv2.imread(pth+j))
-        for i in range(len(pred['instances'])):
+        pred = predictor_1(cv2.imread(pth+j))# predictor_1 is the model which gives the output in the format of a detectron2 Mask-RCNN model
 
-            coord = pred['instances'].pred_masks[i]
-            x_pt, y_pt = border_only(coord.cpu(), str(i))
-            tag = CLASS_NAMES[pred['instances'].pred_classes[i]]
-            if tag in obj_json:
-                json_obj['regions'].append(asset(x_pt.tolist()[0], y_pt.tolist()[0], tag))
+        for i in range(len(pred['instances'])):
+            try:# if there's no contours made
+                coord = pred['instances'].pred_masks[i]
+                x_pt, y_pt = border_only(coord.cpu(), str(i))
+                tag = CLASS_NAMES[pred['instances'].pred_classes[i]]
+                if tag in obj_json:
+                    json_obj['regions'].append(asset(x_pt.tolist()[0], y_pt.tolist()[0], tag))
+            except:
+                pass
         
         all_json[json_key] = json_obj
     # break
