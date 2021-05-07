@@ -15,4 +15,4 @@ Put this up here because I use these scripts while annotating extensively.
 
 * vgg_json_creator.py : this script makes a json file out of outputs/predictions if they're are similar to output format of a detectron2(https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md) mask-RCNN output.
 
-PS : there are some indentation errors in above scripts while running in some text editors but otherwise seems fine in jupyter notebook
+PS : there are some indentation errors in above scripts while running in some text editors but otherwise seems fine in jupyter notebook.
