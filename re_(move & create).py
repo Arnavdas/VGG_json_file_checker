@@ -5,7 +5,7 @@ print('current directory : ',os.getcwd())
 # set the root path and folder path(in which json file(s) is/are present)
 pth_root = pl.Path('/home/arnav/Desktop/detectron2_trial')
 pth_folder = pth_root.joinpath('sample_data_2')
-
+p = 1
 # FOR ONE JSON FILE :
 
 pth_json = pth_folder.joinpath('imperfect_again_json.json')# place the json file to be operated on 
