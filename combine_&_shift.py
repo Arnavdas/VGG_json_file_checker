@@ -36,7 +36,9 @@ if pth_root.is_dir() and pth_folder.is_dir():
         print(new_name,'already exists in',pth_new_json,'\t')
         p = int(input('if u proceed(enter 1), it will be overwritten else enter 0 :'))
     
-    if t*p:    
+    if p:
+        if pth_new_json.is_file():
+            os.remove(str(pth_new_json)+'/'+new_name) 
         with open(str(pth_new_json)+'/'+new_name,'w') as write_file:# creates new json file in the same directory or rewrites it
             json.dump(all_json, write_file)
             print(new_name,'json file created in ',pth_new_json,'\n')
