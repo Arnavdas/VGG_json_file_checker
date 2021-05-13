@@ -4,7 +4,9 @@ print('current directory : ',os.getcwd())
 
 # set the root path and folder path(in which json file(s) is/are present)
 pth_root = pl.Path('/home/arnav/Desktop/detectron2_trial/sample_data_2')# set the root path( dir where u have stored your data)
-pth_fold = pth_root.joinpath('new_jsons')# set the path to folder you annotation file is in 
+pth_fold = pth_root.joinpath('new_jsons')# set the path to folder you annotation file is in
+new_name = 'all_json_files_new_2.json'# new json file name (should end with .json)
+pth_new_json = pth_folder# setting the path for new corrected json file to be created
 
 # BELOW CODE READS ALL JSON FILES AND COMBINES THEM
 
@@ -30,9 +32,6 @@ if pth_root.is_dir() and pth_folder.is_dir():
     print('final len of combined dict : ', len(all_json),'\n')
 
     # writes the above dictonary as a json file containing updated filenames and keys
-    new_name = 'all_json_files_new_2.json'# should end with .json
-    pth_new_json = pth_folder# setting the path for new corrected json file to be created
-    
     if new_name in os.listdir(pth_new_json):
         print(new_name,'already exists in',pth_new_json,'\t')
         p = int(input('if u proceed(enter 1), it will be overwritten else enter 0 :'))
