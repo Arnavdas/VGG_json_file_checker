@@ -4,7 +4,7 @@ print('current directory : ',os.getcwd())
 
 # set the root path and folder path(in which json file(s) is/are present)
 pth_root = pl.Path('/home/arnav/Desktop/detectron2_trial/sample_data_2')# set the root path( dir where u have stored your data)
-pth_fold = pth_root.joinpath('new_jsons')# set the path to folder you annotation file is in
+pth_folder = pth_root.joinpath('new_jsons')# set the path to folder you annotation file is in
 new_name = 'all_json_files_new_2.json'# new json file name (should end with .json)
 pth_new_json = pth_folder# setting the path for new corrected json file to be created
 
