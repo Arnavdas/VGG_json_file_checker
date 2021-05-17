@@ -34,7 +34,7 @@ for j in os.listdir(pth):
         pred = predictor_1(cv2.imread(pth+j))# predictor_1 is the model which gives the output in the format of a detectron2 Mask-RCNN model
 
         for i in range(len(pred['instances'])):
-            try:# if there's no contours made
+            try:# used try bcz if there's no contours in current image skip the process
                 coord = pred['instances'].pred_masks[i]
                 x_pt, y_pt = border_only(coord.cpu(), str(i))
                 tag = CLASS_NAMES[pred['instances'].pred_classes[i]]
