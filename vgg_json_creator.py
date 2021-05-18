@@ -6,7 +6,7 @@ def asset(x_pts, y_pts, tag):
     return {"shape_attributes":{"name":"polygon","all_points_x":x_pts,"all_points_y":y_pts}, "region_attributes":{"object":str(tag)}}    
 
 def border_only(coord, i):
-    bin_dest, bin_nam = '/home/phiai/Desktop/arnavDas/Tower asset detection/binary masks/', i+'_bin_mask.png'
+    bin_dest, bin_nam = '/home/Desktop/arnavDas/asset detection/binary masks/', i+'_bin_mask.png'
     plt.imsave(bin_dest+bin_nam, coord)
     im = cv2.imread(bin_dest+bin_nam)
     imgray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
