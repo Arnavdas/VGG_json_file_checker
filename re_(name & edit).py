@@ -74,13 +74,12 @@ if pth_root.is_dir() and pth_folder.is_dir() and pth_json.is_file():
 	               
 	 if p:
 		if pth_new_json.is_file():
-                    os.remove(str(pth_new_json)+'/'+new_name)    
+			os.remove(str(pth_new_json)+'/'+new_name)    
 	        with open(str(pth_new_json)+'/'+new_name,'w') as write_file:# creates new json file in the same directory or rewrites it
-	             json.dump(new_json, write_file)
-	                print(new_name,'created in',pth_new_json,':',pth_new_json.joinpath(new_name).is_file())
-	        else:
-	            print('no new json file created in :',pth_new_json)
-    	else:
-    		print(pth_new_json,':',pth_new_json.is_dir())
+	             	json.dump(new_json, write_file)
+	             	print(new_name,'created in',pth_new_json,':',pth_new_json.joinpath(new_name).is_file())
+	 else:
+	            print('no new json file created in :',pth_new_json)      
+			
 else:
     print(pth_root,':',pth_root.is_dir(),',',pth_folder,':',pth_folder.is_dir(),',',pth_json,':',pth_json.is_file())
