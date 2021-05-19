@@ -9,7 +9,7 @@ pth_dest = pth_root.joinpath('final_img')
 if pth_root.is_dir() and pth_folder.is_dir() and pth_json.is_file(): 
     
     print('Root path :',pth_root,', Folder path :',pth_folder,', json file path :',pth_json,'\n')
-    all_json, wrong_tag, new_json = {}, ['apple','orange','joint','nut'], {}
+    wrong_tag, new_json = ['apple','orange','joint','nut'], {}
     nam = 'fruit_' # for new name to new_json file
     edit_dict, edit_key, fname = {'aple':'apple', 'oranje':'orange'}, 'testing'+'_', 'example'+'_'
     json_file = json.load(pth_json.open())
