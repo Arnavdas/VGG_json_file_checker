@@ -15,4 +15,6 @@ Put these scripts up here because I use these scripts while assessing annotation
 
 * vgg_json_creator.py : this script makes a json file out of outputs/predictions if they're are similar to output format of a detectron2(https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md) mask-RCNN output.
 
+* duplicate_finder.py : this script finds if any particular region have more than one masks made upon them with exact same coordinates
+
 PS : there are some indentation errors in above scripts while running in some text editors but otherwise seems fine in jupyter notebook.
