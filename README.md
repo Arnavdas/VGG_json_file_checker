@@ -19,4 +19,8 @@ Put these scripts up here because I use these scripts while assessing annotation
 
 * **random_delete.py** : randomly deletes assets from the json file upto a number specified by us 
 
+* **img_dp_del.py** : suppose if u have for some reason more than 1 key for the same image and also different annotations of that image in different keys, then this script merges all the annotations into the first key and deletes the rest
+
+* **duplicate_coord_del.py** :  suppose in one key u have for one region different labels with exact x and y coordinates then, this script retaiins the first annotatiion of that region and deletes the rest
+
 PS : there are some indentation errors in above scripts while running in some text editors but otherwise seems fine in jupyter notebook.
